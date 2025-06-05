@@ -154,6 +154,21 @@
         width: 100%;
       }
     }
+
+	.pay-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 24px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px 0;
+    transition: background 0.3s;
+  }
+  .pay-button:hover {
+    background-color: #45a049;
+  }	
 	
   </style>
 </head>
@@ -241,12 +256,20 @@
       
       <p>Scan the QR code or click below to pay</p>
       
-      <button class="pay-button" 
-              onclick="window.location.href='upi://pay?pa=manojanne96-1@okhdfcbank&pn=FitnessEvolution&am=500&cu=INR'">
-        Pay Now via UPI
-      </button>
-      
-      <p>After payment, you'll receive a confirmation email within 24 hours.</p>
+      <button id="upiButton" class="pay-button">
+    Pay Now via UPI
+  </button>
+  
+  <div id="upiDetails" class="hidden" style="margin-top:20px;">
+    <p>Send payment to:</p>
+    <div style="background:#f5f5f5; padding:15px; border-radius:5px; display:inline-block;">
+      <strong id="upiId">manojanne96-1@okhdfcbank</strong>
+    </div>
+    <button id="copyButton" style="margin-left:10px; padding:8px 15px; background:#4CAF50; color:white; border:none; border-radius:4px;">
+      Copy UPI ID
+    </button>
+    <p style="color:#666; font-size:14px; margin-top:10px;">Paste this UPI ID in any payment app</p>      
+      <p>Kindly Scan with Fitness Evolution!</p>
     </div>
   </div>
 
@@ -330,8 +353,49 @@
         submitButton.textContent = originalButtonText;
       }
     });
+	// UPI Payment Handler
+  document.getElementById('upiButton').addEventListener('click', function() {
+    const upiDetails = document.getElementById('upiDetails');
+    upiDetails.classList.remove('hidden');
+    
+    // Scroll to UPI details
+    upiDetails.scrollIntoView({ behavior: 'smooth' });
+  });
+
+  // Copy to Clipboard Function
+  document.getElementById('copyButton').addEventListener('click', function() {
+    const upiId = document.getElementById('upiId').textContent;
+    
+    navigator.clipboard.writeText(upiId)
+      .then(() => {
+        // Change button text temporarily
+        const copyBtn = document.getElementById('copyButton');
+        copyBtn.textContent = 'Copied!';
+        copyBtn.style.background = '#45a049';
+        
+        setTimeout(() => {
+          copyBtn.textContent = 'Copy UPI ID';
+          copyBtn.style.background = '#4CAF50';
+        }, 2000);
+      })
+      .catch(err => {
+        console.error('Failed to copy: ', err);
+        alert('Failed to copy. Please manually select and copy the UPI ID.');
+      });
+  });
+
+ 	 	
   </script>
+
+	
   <!-- END OF JAVASCRIPT CODE -->
+
+	<a href="https://wa.me/919985494494?text=I%20want%20to%20join%20Fitness%20Evolution" 
+     style="position:fixed; bottom:20px; right:20px; background:#25D366; color:white; 
+            width:50px; height:50px; border-radius:50%; text-align:center; line-height:50px;
+            font-size:24px;">
+     💬
+  </a>
 
 </body>
 </html>
