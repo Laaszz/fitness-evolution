@@ -1,0 +1,337 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fitness Evolution - Transform Your Body</title>
+  <style>
+
+	<meta property="og:title" content="Fitness Evolution - Personal Training">
+<meta property="og:description" content="Transform your body with our gym memberships and personal training!">
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 60px 20px;
+      position: relative;
+    }
+
+    .contact-info {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      text-align: right;
+      font-size: 14px;
+    }
+
+    .cta-button {
+      background-color: #f04e23;
+      padding: 12px 24px;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+      display: inline-block;
+      margin-top: 20px;
+    }
+
+    .section {
+      padding: 40px 20px;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    form input,
+    form select,
+    form textarea {
+      margin: 10px 0;
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    form label {
+      font-size: 14px;
+      text-align: left;
+    }
+
+    button {
+      background-color: #f04e23;
+      color: white;
+      padding: 12px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .payment-section {
+      text-align: center;
+      margin-top: 30px;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+
+    .qr-code {
+      width: 200px;
+      height: 200px;
+      margin: 20px auto;
+      display: block;
+    }
+
+    .pay-button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    .error-message {
+      color: red;
+      margin-top: 10px;
+    }
+
+    .success-message {
+      color: green;
+      margin-top: 10px;
+    }
+	 .personal-training-banner {
+      background-color: #4CAF50;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin: 20px 0;
+      border-radius: 5px;
+      font-weight: bold;
+      font-size: 18px;
+    }
+    
+    .training-options {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin: 30px 0;
+    }
+    
+    .training-card {
+      width: 45%;
+      min-width: 250px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 10px 0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    
+    .training-card h3 {
+      color: #f04e23;
+      margin-top: 0;
+    }
+    
+    @media (max-width: 600px) {
+      .training-card {
+        width: 100%;
+      }
+    }
+	
+  </style>
+</head>
+<body>
+
+  <!-- Homepage Section -->
+  <header id="home">
+    <div class="contact-info">
+      <strong>Contact Us:</strong><br>
+      Phone: +91 9985494494<br>
+      Email: fitnessevolution08@gmail.com
+ <br>
+      Address: 3rd Floor,9-2 Opp VR Siddhartha Eng College,<br>Kamayyathopu,Kannuru,Vijayawada -520007 </div>
+    <h1>Fitness Evolution</h1>
+    <p>Transform Your Body, Transform Your Life</p>
+    <a href="#join" class="cta-button">Join Now</a>
+  </header>
+
+	<!-- New Personal Training Section -->
+  <div class="section">
+    <h2 style="text-align: center;">Personal Training Options</h2>
+    <div class="training-options">
+      <div class="training-card">
+        <h3>Basic Personal Training</h3>
+        <p>✔ 1-on-1 sessions</p>
+        <p>✔ Custom workout plans</p>
+        <p>✔ 3 sessions/week</p>
+      </div>
+      <div class="training-card">
+        <h3>Premium Personal Training</h3>
+        <p>✔ Dedicated trainer</p>
+        <p>✔ Custom diet + workout plans</p>
+        <p>✔ 5 sessions/week</p>
+        <p>✔ Progress tracking</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Application Form Section -->
+  <div class="section" id="join">
+    <h2>Membership Application</h2>
+    <form id="membershipForm">
+      <input type="text" name="name" placeholder="Full Name" required />
+      <input type="number" name="age" placeholder="Age" required />
+
+      <!-- Gender Dropdown -->
+      <select name="gender" required>
+        <option value="">Select Gender</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Prefer not to say">Prefer not to say</option>
+      </select>
+
+      <input type="tel" name="phone" placeholder="Phone Number" required />
+      <input type="email" name="email" placeholder="Email Address" required />
+
+      <select name="plan" required>
+        <option value="">Select Membership Plan</option>
+        <option value="monthly">Monthly - ₹2,999</option>
+        <option value="quarterly">3 Months - ₹6,499</option>
+	<option value="quarterly">6 Months - ₹6,499</option>
+        <option value="yearly">Yearly - ₹14,999</option>
+	<option value="personal_basic">Basic Personal Training(Monthly)- ₹4,999</option>
+        <option value="personal_premium">Premium Personal Training(Monthly) - ₹8,999</option>
+	<option value="personal_basic">Basic Personal Training(3 Months) - ₹11,999</option>
+	<option value="personal_premium">Premium Personal Training(3 Months) - ₹21,999</option>
+	<option value="personal_basic">Basic Personal Training(6 Months) - ₹22,499</option>
+	<option value="personal_premium">Premium Personal Training(6 Months) - ₹39,999</option>
+	<option value="personal_basic">Basic Personal Training(Yearly) - ₹41,999</option>
+	<option value="personal_premium">Premium Personal Training(Yearly) - ₹74,999</option>
+      </select>
+
+      <textarea name="health" placeholder="Any health concerns (optional)"></textarea>
+      <label><input type="checkbox" required /> I agree to the Terms and Conditions</label>
+      <button type="submit">Proceed to Payment</button>
+    </form>
+
+    <!-- Payment Section (initially hidden) -->
+    <div id="paymentSection" class="payment-section hidden">
+      <h3>Complete Your Membership</h3>
+      <p>Please pay the registration fee to activate your membership</p>
+      
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=manojanne96-1@okhdfcbank&pn=FitnessEvolution&am=500&cu=INR" 
+           alt="UPI QR Code" class="qr-code">
+      
+      <p>Scan the QR code or click below to pay</p>
+      
+      <button class="pay-button" 
+              onclick="window.location.href='upi://pay?pa=manojanne96-1@okhdfcbank&pn=FitnessEvolution&am=500&cu=INR'">
+        Pay Now via UPI
+      </button>
+      
+      <p>After payment, you'll receive a confirmation email within 24 hours.</p>
+    </div>
+  </div>
+
+  <!-- INSERT THE JAVASCRIPT CODE HERE -->
+  <script>
+    document.getElementById('membershipForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const form = e.target;
+      const submitButton = form.querySelector('button[type="submit"]');
+      const originalButtonText = submitButton.textContent;
+
+      // Clear any previous messages
+      const oldMessages = form.querySelectorAll('.error-message, .success-message');
+      oldMessages.forEach(msg => msg.remove());
+
+      try {
+        // Show loading state
+        submitButton.disabled = true;
+        submitButton.textContent = 'Processing...';
+
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData.entries());
+
+        // First test with a simple API to verify connectivity
+        // Remove the /* and */ to enable this test
+        /*
+        await fetch('https://jsonplaceholder.typicode.com/posts', {
+          method: "POST",
+          body: JSON.stringify({ test: "connection" }),
+          headers: { "Content-Type": "application/json" }
+        });
+        */
+
+        const scriptURL = "https://script.google.com/macros/s/AKfycby1tyv5fVjCCtvRxR74emlnEu_slrdtBkz_JwgrL6keq7tmWJQtpgb71b6wFX2W5I72/exec";
+        
+        const response = await fetch(scriptURL, {
+          method: "POST",
+          body: JSON.stringify(data),
+          headers: { 
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          mode: 'no-cors'
+        });
+
+        // Show success message
+        const successMsg = document.createElement('div');
+        successMsg.className = 'success-message';
+        successMsg.textContent = 'Form submitted successfully! Showing payment options...';
+        form.appendChild(successMsg);
+
+        // Show the payment section
+        document.getElementById('paymentSection').classList.remove('hidden');
+        document.getElementById('paymentSection').scrollIntoView({ behavior: 'smooth' });
+
+      } catch (error) {
+        console.error('Error!', error);
+        
+        // Show error message
+        const errorMsg = document.createElement('div');
+        errorMsg.className = 'error-message';
+        errorMsg.textContent = `Submission failed. Please try again or contact support.`;
+        
+        // Add email fallback option
+        const mailtoLink = `mailto:info@fitnessevolution.com?subject=Membership Application&body=Name: ${encodeURIComponent(form.name.value)}%0D%0A` +
+                          `Age: ${encodeURIComponent(form.age.value)}%0D%0A` +
+                          `Gender: ${encodeURIComponent(form.gender.value)}%0D%0A` +
+                          `Phone: ${encodeURIComponent(form.phone.value)}%0D%0A` +
+                          `Email: ${encodeURIComponent(form.email.value)}%0D%0A` +
+                          `Plan: ${encodeURIComponent(form.plan.value)}%0D%0A` +
+                          `Health: ${encodeURIComponent(form.health.value)}`;
+        
+        errorMsg.innerHTML += `<br><br>Alternatively, <a href="${mailtoLink}">click here to send your application via email</a>.`;
+        
+        form.appendChild(errorMsg);
+        errorMsg.scrollIntoView({ behavior: 'smooth' });
+        
+      } finally {
+        // Reset button state
+        submitButton.disabled = false;
+        submitButton.textContent = originalButtonText;
+      }
+    });
+  </script>
+  <!-- END OF JAVASCRIPT CODE -->
+
+</body>
+</html>
