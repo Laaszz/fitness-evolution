@@ -16,21 +16,23 @@
     }
 
     header {
-      background: #222;
-      color: white;
-      text-align: center;
-      padding: 60px 20px;
-      position: relative;
-    }
+  background: #222;
+  color: white;
+  text-align: center;
+  padding: 60px 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+ }
 
     .contact-info {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      text-align: right;
-      font-size: 14px;
-    }
-
+  position: static;
+  font-size: 14px;
+  margin-top: 10px;
+  text-align: center;
+  line-height: 1.4;
+}
     .cta-button {
       background-color: #f04e23;
       padding: 12px 24px;
@@ -225,22 +227,48 @@
       <input type="tel" name="phone" placeholder="Phone Number" required />
       <input type="email" name="email" placeholder="Email Address" required />
 
-      <select name="plan" required>
-        <option value="">Select Membership Plan</option>
-        <option value="monthly">Monthly - ₹2,999</option>
-        <option value="quarterly">3 Months - ₹6,499</option>
-	<option value="quarterly">6 Months - ₹6,499</option>
-        <option value="yearly">Yearly - ₹14,999</option>
-	<option value="personal_basic">Basic Personal Training(Monthly)- ₹4,999</option>
-        <option value="personal_premium">Premium Personal Training(Monthly) - ₹8,999</option>
-	<option value="personal_basic">Basic Personal Training(3 Months) - ₹11,999</option>
-	<option value="personal_premium">Premium Personal Training(3 Months) - ₹21,999</option>
-	<option value="personal_basic">Basic Personal Training(6 Months) - ₹22,499</option>
-	<option value="personal_premium">Premium Personal Training(6 Months) - ₹39,999</option>
-	<option value="personal_basic">Basic Personal Training(Yearly) - ₹41,999</option>
-	<option value="personal_premium">Premium Personal Training(Yearly) - ₹74,999</option>
-      </select>
+	<!-- Plan Category Selection -->
+	<select id="planCategory" required>
+  	<option value="">Select Training Type</option>
+  	<option value="gt">General Training (GT)</option>
+	<option value="pt">Personal Training (PT)</option>
+  	<option value="gtpt">PT + GT</option>
+	</select>
 
+	<!-- GT Options -->
+	<select id="gtOptions" name="plan" class="hidden" required>
+  	<option value="">Select GT Plan</option>
+  	<option value="gt_monthly">Monthly - ₹2,999</option>
+  	<option value="gt_quarterly">Quarterly - ₹6,499</option>
+  	<option value="gt_yearly">Yearly - ₹14,999</option>
+	</select>
+
+	<!-- PT Options -->
+	<select id="ptTypeOptions" class="hidden" required>
+  	<option value="">Select Personal Training Type</option>
+  	<option value="pt_basic">Basic Personal Training</option>
+  	<option value="pt_premium">Premium Personal Training</option>
+	</select>
+
+	<!-- PT Basic Plan -->
+	<select id="ptBasicOptions" name="plan" class="hidden" required>
+  	<option value="">Select Basic PT Plan</option>
+  	<option value="pt_basic_monthly">Monthly - ₹4,999</option>
+  	<option value="pt_basic_quarterly">Quarterly - ₹11,999</option>
+  	<option value="pt_basic_halfyearly">6 Months - ₹22,499</option>
+  	<option value="pt_basic_yearly">Yearly - ₹41,999</option>
+	</select>
+
+	<!-- PT Premium Plan -->
+	<select id="ptPremiumOptions" name="plan" class="hidden" required>
+  	<option value="">Select Premium PT Plan</option>
+  	<option value="pt_premium_monthly">Monthly - ₹8,999</option>
+  	<option value="pt_premium_quarterly">Quarterly - ₹21,999</option>
+  	<option value="pt_premium_halfyearly">6 Months - ₹39,999</option>
+  	<option value="pt_premium_yearly">Yearly - ₹74,999</option>
+	</select>
+
+      
       <textarea name="health" placeholder="Any health concerns (optional)"></textarea>
       <label><input type="checkbox" required /> I agree to the Terms and Conditions</label>
       <button type="submit">Proceed to Payment</button>
@@ -303,17 +331,13 @@
         });
         */
 
-        const scriptURL = "https://script.google.com/macros/s/AKfycby1tyv5fVjCCtvRxR74emlnEu_slrdtBkz_JwgrL6keq7tmWJQtpgb71b6wFX2W5I72/exec";
+        const scriptURL = "https://script.google.com/macros/s/AKfycbygyUjDp-ERW-LrymMI06o0hOysDCuFzdGB8QGXb68K5KMosnfKQG7D5mx1P5DEwszA0w/exec";
         
-        const response = await fetch(scriptURL, {
-          method: "POST",
-          body: JSON.stringify(data),
-          headers: { 
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-          },
-          mode: 'no-cors'
-        });
+       const response = await fetch(scriptURL, {
+  	method: "POST",
+  	body: formData,
+  	mode: 'no-cors'
+	});
 
         // Show success message
         const successMsg = document.createElement('div');
@@ -383,6 +407,46 @@
         alert('Failed to copy. Please manually select and copy the UPI ID.');
       });
   });
+
+document.getElementById('planCategory').addEventListener('change', function () {
+  	const gt = document.getElementById('gtOptions');
+  	const ptType = document.getElementById('ptTypeOptions');
+  	const ptBasic = document.getElementById('ptBasicOptions');
+  	const ptPremium = document.getElementById('ptPremiumOptions');
+
+  	// Hide all options initially
+  	gt.classList.add('hidden');
+  	ptType.classList.add('hidden');
+  	ptBasic.classList.add('hidden');
+  	ptPremium.classList.add('hidden');
+
+  	const category = this.value;
+  	if (category === 'gt') {
+    	gt.classList.remove('hidden');
+  } else if (category === 'pt') {
+    	ptType.classList.remove('hidden');
+  } else if (category === 'gtpt') {
+    gt.classList.remove('hidden');
+    ptType.classList.remove('hidden');
+  }
+});
+
+	// When PT type is selected
+document.getElementById('ptTypeOptions').addEventListener('change', function () {
+  const ptBasic = document.getElementById('ptBasicOptions');
+  const ptPremium = document.getElementById('ptPremiumOptions');
+
+  ptBasic.classList.add('hidden');
+  ptPremium.classList.add('hidden');
+
+  const ptType = this.value;
+  if (ptType === 'pt_basic') {
+    ptBasic.classList.remove('hidden');
+  } else if (ptType === 'pt_premium') {
+    ptPremium.classList.remove('hidden');
+  }
+});
+
 
  	 	
   </script>
